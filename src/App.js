@@ -1,25 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./calculator.css";
 
-function App() {
+function CalcButton({ text, onButtonClick }) {
+  return <button>{text}</button>;
+}
+
+function Output() {
+  return <p className="output">Hello</p>;
+}
+
+function ButtonDisplay() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="calc-row">
+        <CalcButton text={"Clear"} />
+        <CalcButton text={"+/-"} />
+        <CalcButton text={"%"} />
+        <CalcButton text={"÷"} />
+      </div>
+      <div className="calc-row">
+        <CalcButton text={"7"} />
+        <CalcButton text={"8"} />
+        <CalcButton text={"9"} />
+        <CalcButton text={"X"} />
+      </div>
+      <div className="calc-row">
+        <CalcButton text={"4"} />
+        <CalcButton text={"5"} />
+        <CalcButton text={"6"} />
+        <CalcButton text={"-"} />
+      </div>
+      <div className="calc-row">
+        <CalcButton text={"1"} />
+        <CalcButton text={"2"} />
+        <CalcButton text={"3"} />
+        <CalcButton text={"+"} />
+      </div>
+      <div className="calc-row">
+        <CalcButton text={"0"} />
+        <CalcButton text={"."} />
+        <CalcButton text={"="} />
+      </div>
+    </>
   );
 }
 
-export default App;
+export default function Calculator() {
+  return (
+    <>
+      <Output />
+      <ButtonDisplay />
+    </>
+  );
+}

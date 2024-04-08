@@ -1,0 +1,14 @@
+body {
+    display: flex; 
+    justify-content: center;
+}
+
+.calc-row {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+.output {
+    border: 1px solid #000;
+}
