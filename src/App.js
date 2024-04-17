@@ -59,10 +59,9 @@ export default function Calculator() {
 
   // operation gets performed when equals is pressed or if user enters more than one operator 
   useEffect(() => {
-    if (equalsPressed && currentOperation.length === 3){
+    if (equalsPressed){
       performOperation();
       setEqualsPressed(false);
-      console.log("Operation performed");
     }
   }, [equalsPressed, currentOperation]); 
   
@@ -107,12 +106,29 @@ export default function Calculator() {
     } else if (value === "="){
       setCurrentOperation(prevOperation => [...prevOperation, getOutputNumber()]);
       setEqualsPressed(true);
-      console.log("Equals Pressed");
       return;
     } else if (value === "+"){
       addOperator("+");
       return;
-    } 
+    } else if (value === "-"){
+      addOperator("-");
+      return;
+    } else if (value === "*"){
+      addOperator("*");
+      return;
+    } else if (value === "/"){
+      addOperator("/");
+      return;
+    } else if (value === "."){
+      setStack((prevStack) => [...prevStack, "."]);
+      return;
+    } else if (value === "+/-"){
+      setStack((prevStack) => [-1 * getOutputNumber()]);
+      return;
+    } else if (value === "%"){
+      setStack((prevStack) => [getOutputNumber() / 100]);
+      return;
+    }
   }
 
   // returns the number from the stack
@@ -120,7 +136,7 @@ export default function Calculator() {
     if (stack.length === 0) {
       return 0;
     } else {
-      let number = parseInt(stack.join(''));
+      let number = parseFloat(stack.join(''));
       return number; 
     }
   }
@@ -148,13 +164,14 @@ export default function Calculator() {
     };
 
     // completes the operation
-    console.log("Current Operation prior to operation: ", currentOperation);
     let operator = currentOperation[1];
     let result = operators[operator](currentOperation[0], currentOperation[2]);
-    console.log(currentOperation[0], operator, currentOperation[2], "=", result); 
 
-    // updates currentOperation
-    setCurrentOperation([result]);
+    // updates the stack with the result of the operation
+    setStack([result]);
+
+    // clears the currentOperation
+    setCurrentOperation([]);
 
     // updates the output for the calculator
     setOutput(result);
