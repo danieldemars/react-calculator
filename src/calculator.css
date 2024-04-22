@@ -1,7 +1,7 @@
 body {
     display: flex; 
     justify-content: center;
-    background: radial-gradient(circle, rgb(0, 255, 217), rgb(54, 114, 255));
+    background: radial-gradient(ellipse, rgb(0, 255, 217), rgb(54, 114, 255));
 }
 
 .calc-row {
@@ -14,7 +14,7 @@ body {
     height: 50px; 
     width: 100px; 
     margin: 5px; 
-    border: 2px solid #26ff00;
+    border: 3px solid #26ff00;
     background-color: rgb(159, 255, 159); 
     display: flex; 
     justify-content: center; 
